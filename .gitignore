@@ -1,0 +1,15 @@
+# Build output
+/target
+
+# Rust backup files from `cargo fix`
+**/*.rs.bk
+
+# Editor / OS noise
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Local scratch data
+*.jsonl
+!fixtures/*.jsonl

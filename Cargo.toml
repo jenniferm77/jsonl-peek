@@ -1,0 +1,32 @@
+[package]
+name = "jsonl-peek"
+version = "0.2.0"
+edition = "2021"
+rust-version = "1.70"
+license = "MIT"
+description = "Single-pass sampling and health checks for large JSONL datasets"
+authors = ["jenniferm77"]
+repository = "https://github.com/jenniferm77/jsonl-peek"
+readme = "README.md"
+keywords = ["jsonl", "ndjson", "dataset", "sampling", "cli"]
+categories = ["command-line-utilities", "parser-implementations"]
+
+# The library and binary names are fixed so that `use jsonl_peek::...` keeps
+# working no matter what the package or repository is called.
+[lib]
+name = "jsonl_peek"
+path = "src/lib.rs"
+
+[[bin]]
+name = "jsonl-peek"
+path = "src/main.rs"
+
+# No third-party crates. The JSON parser, the histogram and the random number
+# generator are all in this repository, so `cargo build` works offline and the
+# whole dependency tree is auditable by reading it.
+[dependencies]
+
+[profile.release]
+opt-level = 3
+lto = true
+panic = "abort"
